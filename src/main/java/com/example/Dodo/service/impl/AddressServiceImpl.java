@@ -41,7 +41,7 @@ public class AddressServiceImpl extends BaseServiceImpl<Address, AddressReposito
                 addressDTO.setComment(request.getComment());
                 addressDTO.setNum(request.getNum());
                 addressDTO.setStreet(request.getStreet());
-                Long userId = jwtProvider.getUserIdFromToken(token);
+                Long userId = jwtProvider.validateToken(token);
                 UserDTO userDTO = userService.findById(userId);
                 addressDTO.setUser(userDTO);
             }catch (JwtException e) {

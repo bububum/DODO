@@ -35,14 +35,6 @@ public class JwtProvider {
     }
 
 
-    public Long getUserIdFromToken(String token) throws SignatureException {
-        try {
-            Claims claims = Jwts.parser().setSigningKey(authKey).parseClaimsJws(token).getBody();
-            return claims.get("id", Long.class);
-        } catch (SignatureException e) {
-            throw new SignatureException("Invalid JWT signature");
-        }
-    }
     public String generateAccessToken(Long userId) {
         return generateToken(userId, expiration);
     }
