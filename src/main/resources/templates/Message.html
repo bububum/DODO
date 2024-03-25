@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodo Pizza Newsletter</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1, p {
+            color: #333333;
+        }
+        /* Стили для логотипа Dodo Pizza */
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 150px;
+        }
+        /* Стили для изображений продуктов */
+        .product-images {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .product-images img {
+            width: 30%;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        /* Стили для кнопок */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #e64a19;
+        }
+        /* Стили для блока Validation */
+        .validation {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #999999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <!-- Путь к логотипу компании в формате JPG -->
+        <img src="icons/company_logo.jpg" alt="Dodo Pizza">
+    </div>
+    <h1>Новые вкусные предложения от Dodo Pizza!</h1>
+    <p>Уважаемый клиент, у нас есть отличные новости для вас!</p>
+    <div class="product-images">
+        <!-- Пути к изображениям пицц в формате WEBP и их резервные копии в форматах PNG или JPEG -->
+        <picture>
+            <source srcset="icons/pizza1.webp" type="image/webp">
+            <source srcset="icons/pizza1.jpg" type="image/jpeg">
+            <img src="icons/pizza1.jpg" alt="Pizza 1">
+        </picture>
+        <picture>
+            <source srcset="icons/pizza2.webp" type="image/webp">
+            <source srcset="icons/pizza2.jpg" type="image/jpeg">
+            <img src="icons/pizza2.jpg" alt="Pizza 2">
+        </picture>
+        <picture>
+            <source srcset="icons/pizza3.webp" type="image/webp">
+            <source srcset="icons/pizza3.jpg" type="image/jpeg">
+            <img src="icons/pizza3.jpg" alt="Pizza 3">
+        </picture>
+    </div>
+    <p>Не упустите шанс попробовать наши новые блюда! Нажмите кнопку ниже, чтобы заказать!</p>
+    <a href="http://localhost:8080/swagger-ui/index.html#/" class="btn">Заказать сейчас</a>
+    <div class="validation">
+        <p>Validation</p>
+    </div>
+</div>
+</body>
+</html>
+
