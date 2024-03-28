@@ -4,10 +4,12 @@ import com.example.Dodo.base.BaseServiceImpl;
 import com.example.Dodo.dao.ProductSizeRepository;
 import com.example.Dodo.exception.IncorrectRequest;
 import com.example.Dodo.mapper.ProductSizeMapper;
+import com.example.Dodo.microservices.FileService;
 import com.example.Dodo.model.DTO.ProductDTO;
 import com.example.Dodo.model.DTO.ProductSizeDTO;
 import com.example.Dodo.model.entity.ProductSize;
 import com.example.Dodo.model.request.ProductCreateRequest;
+import com.example.Dodo.model.response.FileServiceUploadResponse;
 import com.example.Dodo.service.CategoryService;
 import com.example.Dodo.service.ProductService;
 import com.example.Dodo.service.ProductSizeService;
@@ -40,7 +42,7 @@ public class ProductSizeServiceImpl extends BaseServiceImpl<ProductSize, Product
 
             ProductDTO productDTO = new ProductDTO();
             productDTO.setCategory(categoryService.findById(request.getCategoryId()));
-//        productDTO.setLogo(response.getDownloadUri());
+//            productDTO.setLogo(response.getDownloadUri());
             productDTO.setLogo("logo");
             productDTO.setName(request.getName());
             productDTO.setDescription(request.getDescription());

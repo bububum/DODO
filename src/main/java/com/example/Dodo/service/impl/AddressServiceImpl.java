@@ -34,22 +34,27 @@ public class AddressServiceImpl extends BaseServiceImpl<Address, AddressReposito
 
         Language language = Language.getLanguage(languageOrdinal);
 
-        if (request != null) {
+        Long userId;
+        try {
+            userId = jwtProvider.validateToken(token);
+        } catch (JwtException e) {
+            throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "invalidToken"));
+        }
 
-            try {
+            if (request != null) {
+
                 AddressDTO addressDTO = new AddressDTO();
                 addressDTO.setComment(request.getComment());
                 addressDTO.setNum(request.getNum());
                 addressDTO.setStreet(request.getStreet());
-                Long userId = jwtProvider.validateToken(token);
                 UserDTO userDTO = userService.findById(userId);
                 addressDTO.setUser(userDTO);
-            }catch (JwtException e) {
-                throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "invalidToken"));
+
+                save(addressDTO);
+
+            } else {
+                throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "incorrectRequest"));
             }
-        } else {
-            throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "incorrectRequest"));
-        }
-        return "Success";
+            return "Success";
     }
 }

@@ -24,4 +24,8 @@ public class User extends BaseEntity {
     String name;
     Integer dodocoins;
 
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    Account account;
+
 }

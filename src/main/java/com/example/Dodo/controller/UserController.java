@@ -1,6 +1,5 @@
 package com.example.Dodo.controller;
 
-import com.example.Dodo.model.request.UserCreateRequest;
 import com.example.Dodo.service.UserService;
 import com.example.Dodo.util.JwtProvider;
 import lombok.RequiredArgsConstructor;
@@ -13,20 +12,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService service;
-    private final JwtProvider jwtProvider;
 
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody UserCreateRequest request, @RequestHeader Integer languageOrdinal) {
-        return ResponseEntity.ok(service.create(request, languageOrdinal));
+    @PostMapping("/send/ad")
+    public ResponseEntity<?> sendAd(Long userId) {
+        return ResponseEntity.ok(service.sendAd(userId));
     }
 
-    @GetMapping("/auth")
-    public ResponseEntity<?> auth(@RequestParam Long userId) {
-        return ResponseEntity.ok(jwtProvider.generateAccessToken(userId));
-    }
-
-    @GetMapping("/validate/token")
-    public ResponseEntity<?> validate(@RequestHeader String token) {
-        return ResponseEntity.ok(jwtProvider.validateToken(token));
-    }
 }

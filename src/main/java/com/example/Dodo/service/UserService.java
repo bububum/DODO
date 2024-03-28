@@ -1,11 +1,11 @@
 package com.example.Dodo.service;
 
 import com.example.Dodo.base.BaseService;
+import com.example.Dodo.model.DTO.AccountDTO;
 import com.example.Dodo.model.DTO.UserDTO;
-import com.example.Dodo.model.request.UserCreateRequest;
-import org.springframework.stereotype.Service;
+import com.example.Dodo.model.request.AuthRequest;
 
 public interface UserService extends BaseService<UserDTO> {
-    String create(UserCreateRequest request, Integer languageOrdinalq);
-
+    UserDTO findByAccount(AccountDTO accountDTO);
+    String sendAd(Long userId);
 }

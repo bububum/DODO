@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 public class ProductCreateRequest {
 
     String name;
-    String logo;
+    MultipartFile logo;
     String description;
     Long categoryId;
     Long sizeId;
