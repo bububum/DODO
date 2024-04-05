@@ -74,12 +74,12 @@ public class AccountServiceImpl extends BaseServiceImpl<Account, AccountReposito
             accountNew.setTempPassword(tempPassword);
             accountNew.setEmail(request.getEmail());
             accountNew.setAccountStatus(AccountStatus.NEW);
-            save(accountNew);
+            accountNew=save(accountNew);
 
             UserDTO userDTO = new UserDTO();
             userDTO.setName(request.getName());
             userDTO.setEmail(request.getEmail());
-            userDTO.setAccountDTO(accountNew);
+            userDTO.setAccount(accountNew);
 
             userService.save(userDTO);
 
@@ -113,7 +113,7 @@ public class AccountServiceImpl extends BaseServiceImpl<Account, AccountReposito
         if (account.getTempPassword().equals(request.getPassword()) && minutesPassed <= 10) {
             account.setAccountStatus(AccountStatus.APPROVED);
             update(account);
-            UserDTO user = userService.findByAccount(account);
+            UserDTO user = userService.findByAccount(account.getId());
 
             accessToken = jwtProvider.generateAccessToken(user.getId());
         } else {
@@ -123,8 +123,4 @@ public class AccountServiceImpl extends BaseServiceImpl<Account, AccountReposito
         return accessToken;
     }
 
-    @Override
-    public Account mappingAccountDTO(AccountDTO accountDTO) {
-        return mapper.toEntity(accountDTO, context);
-    }
 }

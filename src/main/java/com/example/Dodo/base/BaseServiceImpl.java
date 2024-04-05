@@ -33,7 +33,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity,
 
     @Override
     public D findById(Long id) {
-        return mapper.toDto(rep.findById(id).orElseThrow(()->new RuntimeException("fjfjjf")),context);
+        return mapper.toDto(rep.findById(id).orElseThrow(()->new RuntimeException("Not found size")),context);
     }
 
     @Override

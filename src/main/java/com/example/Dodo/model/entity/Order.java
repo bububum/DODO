@@ -1,6 +1,7 @@
 package com.example.Dodo.model.entity;
 
 import com.example.Dodo.base.BaseEntity;
+import com.example.Dodo.model.enums.OrderStatus;
 import com.example.Dodo.model.enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -27,7 +28,11 @@ public class Order extends BaseEntity {
     BigDecimal price;
     Integer dodocoins;
     LocalDateTime orderDate;
+    BigDecimal discount;
+    @Enumerated(EnumType.STRING)
     PaymentType paymentType;
+    @Enumerated(EnumType.STRING)
+    OrderStatus orderStatus;
 
     @ManyToOne
     @JoinColumn(name = "address_id")

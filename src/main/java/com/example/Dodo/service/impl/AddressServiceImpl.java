@@ -8,6 +8,7 @@ import com.example.Dodo.model.DTO.AddressDTO;
 import com.example.Dodo.model.DTO.UserDTO;
 import com.example.Dodo.model.entity.Address;
 import com.example.Dodo.model.request.AddressCreateRequest;
+import com.example.Dodo.model.response.AddressListResponse;
 import com.example.Dodo.service.AddressService;
 import com.example.Dodo.service.UserService;
 import com.example.Dodo.util.JwtProvider;
@@ -16,6 +17,7 @@ import com.example.Dodo.util.ResourceBundleLanguage;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.JwtException;
 
+import java.util.List;
 
 
 @Service
@@ -35,11 +37,7 @@ public class AddressServiceImpl extends BaseServiceImpl<Address, AddressReposito
         Language language = Language.getLanguage(languageOrdinal);
 
         Long userId;
-        try {
-            userId = jwtProvider.validateToken(token);
-        } catch (JwtException e) {
-            throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "invalidToken"));
-        }
+            userId = jwtProvider.validateToken(token, languageOrdinal);
 
             if (request != null) {
 
@@ -56,5 +54,13 @@ public class AddressServiceImpl extends BaseServiceImpl<Address, AddressReposito
                 throw new IncorrectRequest(ResourceBundleLanguage.periodMessage(language, "incorrectRequest"));
             }
             return "Success";
+    }
+
+    @Override
+    public List<AddressListResponse> getAddressList(String accessToken, Integer languageOrdinal) {
+
+        Long userId = (jwtProvider.validateToken(accessToken, languageOrdinal));
+
+        return rep.findAddressList(userId);
     }
 }

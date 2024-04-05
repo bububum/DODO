@@ -14,5 +14,5 @@ public class UserDTO extends BaseDTO {
     String email;
     String name;
     Integer dodocoins;
-    AccountDTO accountDTO;
+    AccountDTO account;
 }

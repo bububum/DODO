@@ -12,5 +12,4 @@ public interface AccountService extends BaseService<AccountDTO> {
     AccountDTO findByEmail(String email);
     String generateRandomPassword(int length);
     String validateAccount(ValidateEmailRequest request, Integer languageOrdinal);
-    Account mappingAccountDTO(AccountDTO accountDTO);
 }

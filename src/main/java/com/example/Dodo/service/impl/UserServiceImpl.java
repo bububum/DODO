@@ -29,8 +29,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserRepository, UserD
     private final AccountMapper accountMapper;
 
     @Override
-    public UserDTO findByAccount(AccountDTO accountDTO) {
-        return mapper.toDto(rep.findByAccount(accountMapper.toEntity(accountDTO, context)), context);
+    public UserDTO findByAccount(Long accountId) {
+        return mapper.toDto(rep.findByAccount_Id(accountId), context);
     }
 
     @Override

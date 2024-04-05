@@ -16,5 +16,5 @@ import lombok.experimental.FieldDefaults;
 public class OrderProductDTO extends BaseDTO {
 
     OrderDTO order;
-    ProductDTO product;
+    ProductSizeDTO productSize;
 }

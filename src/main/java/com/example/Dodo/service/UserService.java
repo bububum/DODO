@@ -6,6 +6,6 @@ import com.example.Dodo.model.DTO.UserDTO;
 import com.example.Dodo.model.request.AuthRequest;
 
 public interface UserService extends BaseService<UserDTO> {
-    UserDTO findByAccount(AccountDTO accountDTO);
+    UserDTO findByAccount(Long accountId);
     String sendAd(Long userId);
 }

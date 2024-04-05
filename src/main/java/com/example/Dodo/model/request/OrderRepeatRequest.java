@@ -8,19 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderCreateRequest {
-
-    List<ProductOrderList> productOrderLists;
+public class OrderRepeatRequest {
 
     PaymentType paymentType;
     Long addressId;
     LocalDateTime orderDate;
-
 }

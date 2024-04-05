@@ -44,7 +44,9 @@ public class JwtProvider {
         return generateToken(userId, expiration * 2);
     }
 
-    public Long validateToken(String token) {
+    public Long validateToken(String token, Integer languageOrdinal) {
+
+        Language language = Language.getLanguage(languageOrdinal);
 
         try {
             Claims claims;
@@ -53,16 +55,16 @@ public class JwtProvider {
                 String userIdString = String.valueOf(claims.get("id"));
                 return Long.parseLong(userIdString);
             } else {
-                throw new RuntimeException("Токен пустой");
+                throw new RuntimeException(ResourceBundleLanguage.periodMessage(language, "tokenIsEmpty"));
             }
         }catch (ExpiredJwtException e) {
-            throw new RuntimeException("Срок действия токена истек. Просьба авторизоваться");
+            throw new RuntimeException(ResourceBundleLanguage.periodMessage(language, "expiredToken"));
         }catch (MalformedJwtException e) {
-            throw new RuntimeException("Токен взломан");
+            throw new RuntimeException(ResourceBundleLanguage.periodMessage(language, "hackedToken"));
         }catch (ResponseStatusException e) {
-            throw new RuntimeException("Токен пустой");
+            throw new RuntimeException(ResourceBundleLanguage.periodMessage(language, "tokenIsEmpty"));
         }catch (Exception e) {
-            throw new RuntimeException("Токен не прошел валидацию");
+            throw new RuntimeException(ResourceBundleLanguage.periodMessage(language, "notValidatedToken"));
         }
     }
 
